@@ -1,8 +1,8 @@
 import React from "react";
-import Counter from "./Counter";
+import TodoApp from "./TodoApp";
 
 function App() {
-  return <Counter />;
+  return <TodoApp />;
 }
 
 export default App;
