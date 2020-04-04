@@ -1,5 +1,10 @@
 import React from "react";
-import { render, fireEvent, wait } from "@testing-library/react";
+import {
+  render,
+  fireEvent,
+  wait,
+  waitForElement,
+} from "@testing-library/react";
 import DelayedToggle from "../DelayedToggle";
 
 describe("<DelayedToggle />", () => {
@@ -8,5 +13,13 @@ describe("<DelayedToggle />", () => {
     const toggleButton = getByText("토글");
     fireEvent.click(toggleButton);
     await wait(() => getByText("야호!!"), { timeout: 3000 });
+  });
+
+  it("toggles text ON/OFF", async () => {
+    const { getByText } = render(<DelayedToggle />);
+    const toggleButton = getByText("토글");
+    fireEvent.click(toggleButton);
+    const text = await waitForElement(() => getByText("ON"));
+    expect(text).toHaveTextContent("ON");
   });
 });
