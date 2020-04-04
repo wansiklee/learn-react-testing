@@ -1,8 +1,8 @@
 import React from "react";
-import TodoApp from "./TodoApp";
+import DelayedToggle from "./DelayedToggle";
 
 function App() {
-  return <TodoApp />;
+  return <DelayedToggle />;
 }
 
 export default App;
