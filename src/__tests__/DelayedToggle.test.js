@@ -5,6 +5,7 @@ import {
   wait,
   waitForElement,
   waitForDomChange,
+  waitForElementToBeRemoved,
 } from "@testing-library/react";
 import DelayedToggle from "../DelayedToggle";
 
@@ -30,5 +31,15 @@ describe("<DelayedToggle />", () => {
     fireEvent.click(toggleButton);
     const mutations = await waitForDomChange({ container });
     console.log(mutations);
+  });
+
+  it("removes text when toggle is OFF", async () => {
+    const { getByText, container } = render(<DelayedToggle />);
+    const toggleButton = getByText("토글");
+    fireEvent.click(toggleButton);
+    await waitForDomChange({ container });
+    getByText("야호!!");
+    fireEvent.click(toggleButton);
+    await waitForElementToBeRemoved(() => getByText("야호!!"));
   });
 });
