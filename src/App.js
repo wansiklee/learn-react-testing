@@ -1,8 +1,8 @@
 import React from "react";
-import DelayedToggle from "./DelayedToggle";
+import UserProfile from "./UserProfile";
 
 function App() {
-  return <DelayedToggle />;
+  return <UserProfile id="1" />;
 }
 
 export default App;
